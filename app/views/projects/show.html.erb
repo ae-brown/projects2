@@ -1,0 +1,66 @@
+
+<%= link_to 'Back', projects_path, class: 'btn btn-light mb-4' %>
+
+<div class='card'>
+  <div class='card-body'>
+    <h2 class='card-title d-flex justify-content-between mb-2'>
+        
+        <span><%= @project.name %></span>
+        <div>
+          <%= link_to 'Edit', edit_project_path, class: 'btn btn-warning' %>
+          <%= link_to 'Destroy', @project, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+        </div>
+    </h2>
+    <div class='mb-4 '><%= @project.description %></div>
+
+    <h5>Add task</h5>
+
+    <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+
+
+
+    
+    <%= form_for([@task.project, @task]) do |f| %>
+        <div class='input-group'>
+            <%= f.text_field :name, class:'form-control', placeholder: 'Enter task name...' %> 
+            <%= f.text_field :description, class:'form-control', placeholder: 'Enter task description...' %> 
+            <%= f.hidden_field :status, value: 'not-started' %>
+          <div class="input-group-primary">
+            <%= f.submit class: 'btn btn-primary'%>
+          </div>
+        </div><br>
+    <% end %>
+
+     <hr> 
+
+    <h3 class='mt-2'>Tasks</h3>
+
+    <% @project.tasks.each do |task| %>
+      <% if task.persisted? %>
+        <div class='card mb-4' >
+            <div class='card-body' >    
+                <h2 class='card-title d-flex justify-content-between mb-2'>      
+                      <span><%= task.name %></span>
+                      <div>         
+                      <%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-warning btn-sm' %>
+                      <%= link_to 'Destroy', [task.project, task], method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure?' } %>
+                      </div>
+                </h2>
+                <hr>
+              <h5><%= task.description %></h5>
+              <h6 class='mt-4'><span class="bg-<%= task.color %> text-white "><%= task.status %></span></h6>
+            </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+

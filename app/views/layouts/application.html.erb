@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Projects</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    
+  </head>
+
+  <body>
+    
+      <nav class="navbar navbar-light bg-light">
+        <div class="container">
+          <div class="navbar-header">
+            <%= link_to 'Project App', root_path, class: 'navbar-brand' %>
+            
+              <div id="navbar ">
+                <ul class="nav navbar-nav ">
+                  <% if user_signed_in? %>
+                  <%= current_user.email %>
+                    <li><%= link_to 'Sign Out', destroy_user_session_path, class: 'btn btn-primary btn-md ' %></li>
+                  
+                  <% else %>
+                    
+                    <li><%= link_to 'Log In', new_user_session_path, class: 'btn btn-primary btn-md'%></li><br>
+                    <li><%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-md' %></li>
+                </ul>
+                  <% end %>
+
+                </ul>
+            </div>  
+          </div>
+        </div>
+      </nav>
+              
+          <div class='container '> 
+              <div>
+                <p class=" notice "><%= notice %></p>
+                <p class=" alert"><%= alert %></p>
+              </div> 
+            <%= yield %>
+          </div>
+     
+
+  </body>
+</html>
