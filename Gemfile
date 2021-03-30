@@ -12,7 +12,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # postgres for production
 gem 'pg'
 # 12 factor heroku
-gem 'rails_12factor', group: :production
+#gem 'rails_12factor', group: :production
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
