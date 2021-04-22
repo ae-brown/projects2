@@ -11,7 +11,7 @@
           <%= link_to 'Destroy', @project, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
         </div>
     </h2>
-    <div class='mb-4 '><%= @project.description %></div>
+    <div class='mb-3 '><h3><%= @project.description %></h3></div>
 
     <h5>Add task</h5>
 
@@ -41,21 +41,29 @@
 
     <% @project.tasks.each do |task| %>
       <% if task.persisted? %>
-        <div class='card mb-4' >
+        <div class='card task-card mb-4' >
+
             <div class='card-body' >    
+               
                 <h2 class='card-title d-flex justify-content-between mb-2'>      
-                      <span><%= task.name %></span>
-                      <div>         
+                     
+                      <span class=" mb-3 bg-<%= task.color %> text-white btn btn-danger btn-sm"> <%= task.status %></span>
+
+                      <div>        
                       <%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-warning btn-sm' %>
                       <%= link_to 'Destroy', [task.project, task], method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure?' } %>
                       </div>
                 </h2>
-                <hr>
+                
+                <span><h3><%= task.name %></h3></span>               
               <h5><%= task.description %></h5>
-              <h6 class='mt-4'><span class="bg-<%= task.color %> text-white "><%= task.status %></span></h6>
+              
             </div>
+
         </div>
+
       <% end %>
+      
     <% end %>
   </div>
 </div>

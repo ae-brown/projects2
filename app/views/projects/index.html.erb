@@ -8,13 +8,13 @@
 
 
       <% @projects.each do |project| %>
-        <%= link_to project do %>
-          <div class='card mb-6'>
+        <%= link_to project, class: 'text-decoration-none' do %>
+          <div class='card project-card mb-6'>
             <div class='card-body'>
               
-              <h4 class='card-title' ><%= project.name %></h4>
+              <h4 class='card-title text-dark' ><%= project.name %></h4>
         <% end %>
-          <h6><%= project.description %></h6>
+          <h5 class='text-secondary'><%= project.description %></h5>
             <div class='mb-3'>     
               <span class="bg-<%= project.color %> text-white "><%= project.status %>   
                   </span>
