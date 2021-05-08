@@ -17,7 +17,7 @@
           <div class="navbar-header">
             <%= link_to 'Project App', root_path, class: 'navbar-brand' %>
             
-              <div id="navbar ">
+              <div id="navbar d-flex justify-content-between">
                 <ul class="nav navbar-nav ">
                   <% if user_signed_in? %>
                   <%= current_user.email %>
